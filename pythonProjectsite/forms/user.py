@@ -1,0 +1,21 @@
+# -*- coding: cp1251 -*-
+from flask_wtf import FlaskForm
+from wtforms import PasswordField, StringField, TextAreaField, SubmitField, EmailField
+from wtforms.validators import DataRequired
+
+
+class RegisterForm(FlaskForm):
+    # Данные для регистрации
+    email = EmailField('Почта', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    password_again = PasswordField('Повторите пароль', validators=[DataRequired()])
+    name = StringField('Имя пользователя', validators=[DataRequired()])
+    about = TextAreaField("Немного о себе")
+    submit = SubmitField('Зарегестрировать')
+
+
+class LoginForm(FlaskForm):
+    # Данные для Входа в аккаунт
+    email = EmailField('Почта', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    submit = SubmitField('Войти')
